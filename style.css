@@ -1,0 +1,322 @@
+/* ====================================
+   1. Variabili e Reset Base
+   ==================================== */
+
+:root {
+    /* Colori del Minimarket */
+    --colore-primario: #6B4F2B; /* Marrone scuro */
+    --colore-secondario: #A68B5B; /* Marrone medio */
+    --colore-testo-scuro: #6B4F2B; /* Marrone scuro */
+    --colore-testo-bianco: #ffffff; /*Bianco */
+    --colore-sfondo-chiaro: #E9E3C7; /* Beige medio */
+    --colore-sfondo-scuro: #A68B5B; /* Marrone medio */
+    --colore-riquadro: #F5E9DA; /* Beige chiaro */
+    --font-principale: 'Arial', sans-serif;
+}
+
+/* Reset universale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-principale);
+    line-height: 1.6;
+    color: var(--colore-testo-scuro);
+    background-color: var(--colore-sfondo-chiaro);
+}
+
+/* ====================================
+   2. HEADER e Navigazione
+   ==================================== */
+
+header {
+    background-color: var(--colore-sfondo-scuro);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Rende l'header fisso in alto */
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-slogan {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-slogan img {
+    height: 50px; /* Dimensione del logo */
+    width: auto;
+}
+
+.logo-slogan h1 {
+    font-size: 1.2em;
+    color: var(--colore-testo-bianco);
+    font-weight: 600;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--colore-testo-scuro);
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s, background-color 0.3s;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    color: white;
+    background-color: var(--colore-primario);
+    border-radius: 5px;
+}
+
+/* ====================================
+   3. Layout Generale delle Sezioni
+   ==================================== */
+
+section {
+    padding: 60px 5%;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--colore-primario);
+}
+
+/* Sfondo alternato per le sezioni */
+#prodotti, #orari-contatti {
+    background-color: var(--colore-sfondo-chiaro);
+}
+
+
+/* ====================================
+   4. Sezione HERO
+   ==================================== */
+
+#hero {
+    text-align: center;
+    padding-top: 100px; /* Spazio sotto l'header sticky */
+}
+
+#hero h2 {
+    font-size: 2.5em;
+    color: var(--colore-testo-scuro);
+    margin-bottom: 20px;
+}
+
+#hero img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#hero p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+}
+
+#stato-negozio {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    /* Usa il colore primario (verde) */
+    color: var(--colore-primario); 
+}
+
+#orario-corrente {
+    font-size: 1.1em;
+    font-weight: normal;
+    color: var(--colore-testo-scuro); /* Orario normale */
+    margin-bottom: 30px;
+}
+
+
+/* ====================================
+   5. Sezione Prodotti (Griglia)
+   ==================================== */
+
+.categorie-list {
+    display: grid;
+    /* La griglia si adatta, min 250px per colonna */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categoria-item {
+    background-color: var(--colore-riquadro);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.categoria-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.categoria-item h4 {
+    color: var(--colore-primario);
+    margin-bottom: 10px;
+}
+
+
+/* ====================================
+   7. Orari e Contatti
+   ==================================== */
+
+#orari-contatti {
+    display: flex;
+    flex-wrap: wrap; /* Permette il wrap su schermi piccoli */
+    justify-content: space-around;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.orari-apertura, .contatti-info {
+    flex: 1 1 400px; /* Base di 400px, ma si adatta */
+    background-color: var(--colore-riquadro);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orari-apertura table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.orari-apertura th, .orari-apertura td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.orari-apertura th {
+    background-color: var(--colore-primario);
+    color: white;
+}
+
+.contatti-info p {
+    margin: 10px 0;
+}
+
+.contatti-info a {
+    color: var(--colore-primario);
+    text-decoration: none;
+}
+
+.mappa {
+    margin-top: 20px;
+    /* Stile per l'iframe della mappa */
+    height: 250px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e0e0e0; /* Sfondo temporaneo per lo spazio mappa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====================================
+   8. FOOTER
+   ==================================== */
+
+footer {
+    background-color: var(--colore-sfondo-scuro);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px 5%;
+    font-size: 0.9em;
+}
+
+.footer-content a {
+    color: var(--colore-testo-bianco);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* ====================================
+   9. Media Queries (Responsive Design)
+   ==================================== */
+
+@media (max-width: 768px) {
+    /* Schermi medi (tablet) */
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 5%;
+    }
+
+    nav {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    nav ul li a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+
+    #hero h2 {
+        font-size: 2em;
+    }
+
+    /* Le sezioni Orari e Contatti passano in verticale */
+    #orari-contatti {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Schermi piccoli (smartphone) */
+    .logo-slogan h1 {
+        font-size: 1em;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    .categorie-list {
+        /* In schermi molto piccoli, una sola colonna */
+        grid-template-columns: 1fr;
+    }
+}
