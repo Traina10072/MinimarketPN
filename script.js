@@ -119,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // 3. Aggiorna l'HTML con lo stato e il messaggio
-        statoNegozioElement.innerHTML = `<span style="color: ${stato === 'APERTO' ? 'var(--colore-primario)' : '#d32f2f'};">${stato}:</span> ${messaggio}`;
+        // Usa classi CSS anziché style inline per poter personalizzare i colori da style.css
+        statoNegozioElement.innerHTML = `<span class="${stato === 'APERTO' ? 'stato-aperto' : 'stato-chiuso'}">${stato}:</span> ${messaggio}`;
     }
 
     // Funzione per formattare la fascia oraria (es. 08:00 - 13:00 / 16:00 - 20:00)

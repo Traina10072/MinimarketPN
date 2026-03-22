@@ -12,6 +12,15 @@
     --colore-sfondo-scuro: #A68B5B; /* Marrone medio */
     --colore-riquadro: #F5E9DA; /* Beige chiaro */
     --font-principale: 'Arial', sans-serif;
+    --colore-stato-aperto: var(--colore-primario);
+    --colore-stato-chiuso: #d32f2f;
+    /* Colori aggiuntivi (sostituiscono valori hard-coded) */
+    --colore-bianco: #ffffff;
+    --colore-linea: #dddddd; /* #ddd */
+    --colore-bordo: #cccccc; /* #ccc */
+    --colore-mappa-bg: #e0e0e0;
+    --colore-ombra: rgba(0, 0, 0, 0.1);
+    --colore-ombra-strong: rgba(0, 0, 0, 0.2);
 }
 
 /* Reset universale */
@@ -34,7 +43,7 @@ body {
 
 header {
     background-color: var(--colore-sfondo-scuro);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px var(--colore-ombra);
     padding: 10px 5%;
     display: flex;
     justify-content: space-between;
@@ -77,7 +86,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: white;
+    color: var(--colore-bianco);
     background-color: var(--colore-primario);
     border-radius: 5px;
 }
@@ -132,6 +141,15 @@ h2, h3 {
     color: var(--colore-primario); 
 }
 
+/* Classi per lo stato (usate dallo script) */
+.stato-aperto {
+    color: var(--colore-stato-aperto);
+}
+
+.stato-chiuso {
+    color: var(--colore-stato-chiuso);
+}
+
 #orario-corrente {
     font-size: 1.1em;
     font-weight: normal;
@@ -157,14 +175,14 @@ h2, h3 {
     background-color: var(--colore-riquadro);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--colore-ombra);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .categoria-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px var(--colore-ombra-strong);
 }
 
 .categoria-item h4 {
@@ -191,7 +209,7 @@ h2, h3 {
     background-color: var(--colore-riquadro);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--colore-ombra);
 }
 
 .orari-apertura table {
@@ -202,13 +220,13 @@ h2, h3 {
 
 .orari-apertura th, .orari-apertura td {
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--colore-linea);
     text-align: left;
 }
 
 .orari-apertura th {
     background-color: var(--colore-primario);
-    color: white;
+    color: var(--colore-bianco);
 }
 
 .contatti-info p {
@@ -224,13 +242,39 @@ h2, h3 {
     margin-top: 20px;
     /* Stile per l'iframe della mappa */
     height: 250px; 
-    border: 1px solid #ccc;
+    border: 1px solid var(--colore-bordo);
     border-radius: 5px;
     overflow: hidden;
-    background-color: #e0e0e0; /* Sfondo temporaneo per lo spazio mappa */
+    background-color: var(--colore-mappa-bg); /* Sfondo temporaneo per lo spazio mappa */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Assicura che il link occupi tutto lo spazio e che l'iframe sia fluido */
+.mappa a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.mappa iframe {
+    pointer-events: none; /* Questo permette al click di passare attraverso l'iframe e attivare il link <a> */
+    width: 100%;
+    height: 100%;
+    border: 0;         /* Sostituisce style="border:0;" */
+    display: block;
+    pointer-events: none; /* Permette al click di attivare il link <a> sottostante */
+
+}
+
+/* Opzionale: un piccolo effetto hover per far capire che è cliccabile */
+.mappa:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
+    transition: all 0.3s ease;
 }
 
 /* ====================================
@@ -239,7 +283,7 @@ h2, h3 {
 
 footer {
     background-color: var(--colore-sfondo-scuro);
-    color: rgb(255, 255, 255);
+    color: var(--colore-bianco);
     text-align: center;
     padding: 20px 5%;
     font-size: 0.9em;
