@@ -264,7 +264,7 @@ h2, h3 {
     pointer-events: none; /* Questo permette al click di passare attraverso l'iframe e attivare il link <a> */
     width: 100%;
     height: 100%;
-    border: 0;         /* Sostituisce style="border:0;" */
+    border: 0;         
     display: block;
     pointer-events: none; /* Permette al click di attivare il link <a> sottostante */
 
